@@ -3,3 +3,6 @@ terraform.tfstate.backup
 terraform.lock.hcl
 ec2-terra-key
 .terraform/
+terraform.tf
+.terraform.lock.hcl
+
