@@ -7,3 +7,8 @@ variable "env" {
   type = string
   default = "prod"
 }
+
+variable "workspace" {
+  type = string
+  default = "dev"
+}

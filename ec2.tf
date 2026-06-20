@@ -39,7 +39,7 @@ resource "aws_security_group" "sg_ec2" {
 
 resource "aws_instance" "my_instance" {
     for_each = tomap({
-        terra-automate-ec2-micro = "t3.micro"
+        "${var.workspace}"-terra-automate-ec2-micro = "t3.micro"
     })
     instance_type = each.value
     key_name = aws_key_pair.key_pair_ec2.key_name
