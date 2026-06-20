@@ -1,6 +1,6 @@
 # key pair
 resource "aws_key_pair" "key_pair_ec2" {
-    key_name = "ec2-terra-key"
+    key_name = "${var.env}-ec2-terra-key"
     public_key = file("ec2-terra-key.pub")
 }
 
@@ -9,7 +9,7 @@ resource "aws_default_vpc" "default" {
 }
 
 resource "aws_security_group" "sg_ec2" {
-    name = "sg_ec2"
+    name = "${var.env}-sg_ec2"
     description = "Security group for EC2 instance"
     vpc_id = aws_default_vpc.default.id
 
@@ -40,7 +40,7 @@ resource "aws_security_group" "sg_ec2" {
 resource "aws_instance" "my_instance" {
     for_each = tomap({
         terra-automate-ec2-small = "t3.small"
-        terra-automate-ec2-small-2 = "t3.small"
+        terra-automate-ec2-micro = "t3.micro"
     })
     instance_type = each.value
     key_name = aws_key_pair.key_pair_ec2.key_name

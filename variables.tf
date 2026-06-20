@@ -5,5 +5,5 @@ variable "instance_type" {
 
 variable "env" {
   type = string
-  default = "dev"
+  default = "prod"
 }
